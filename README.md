@@ -13,7 +13,7 @@ minido_home is low level to home level bridge
 
 
 
-### LOW protocol interface is defined
+### LOW protocol interface is defined as follows:
 
 {myhome}/{minido}/{low}/{read} => Minido package in binary format
 
