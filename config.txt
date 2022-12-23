@@ -1,0 +1,117 @@
+{
+    "None": {
+        "CONFIG.discoverymode": "label",
+        "CONFIG.devicediscoverymode": "virtual"
+    },
+    "EXI01": {
+        "CONFIG.type": "temperature"
+    },
+    "EXO04": {
+        "CONFIG.type": "dimmer"
+    },
+    "EXO05": {
+        "CONFIG.type": "dimmer"
+    },
+	"EXO08-7": {
+        "CONFIG.cover": "78",
+		"CONFIG.covertime": 32
+    },
+	"EXO08-8": {
+        "CONFIG.cover": "78",
+		"CONFIG.covertime": 31
+    },
+	"EXO08-78": {
+        "CONFIG.type": "cover",
+		"CONFIG.label": "Roleta okno polodniowe",
+        "CONFIG.location": "Salon"
+    },
+	"EXO09-1": {
+        "CONFIG.cover": "12",
+		"CONFIG.covertime": 32
+    },
+	"EXO09-2": {
+        "CONFIG.cover": "12",
+		"CONFIG.covertime": 31
+    },
+	"EXO09-12": {
+        "CONFIG.type": "cover",
+		"CONFIG.label": "Roleta okno zachodnie",
+        "CONFIG.location": "Salon"
+    },
+	"EXI03-3": {
+        "CONFIG.type": "button_short",
+        "CONFIG.label": "Roleta okno zachodnie - Otwarcie",
+        "CONFIG.location": "Salon"
+    },
+	"EXI03-4": {
+        "CONFIG.type": "button_short",
+        "CONFIG.label": "Roleta okno zachodnie - Zamkniecie",
+        "CONFIG.location": "Salon"
+    },
+    "EXI06-11": {
+        "CONFIG.type": "motion_sensor",
+        "CONFIG.label": "Czujnik ruchu kuchni",
+        "CONFIG.location": "Kuchnia"
+    },
+    "EXI06-12": {
+        "CONFIG.type": "motion_sensor",
+        "CONFIG.label": "Czujnik ruchu wiatrolapu",
+        "CONFIG.location": "Wiatrolap"
+    },
+    "EXO04-2": {
+        "brightness": 86
+    },
+    "EXO04-4": {
+        "brightness": 100
+    },
+    "EXI01-8": {
+        "CONFIG.label": "Temperatura w sypialni",
+        "CONFIG.location": "Sypialnia"
+    },
+    "EXI01-2": {
+        "CONFIG.label": "Temperatura podlogi w lazience",
+        "CONFIG.location": "Lazienka"
+    },
+    "EXI01-4": {
+        "CONFIG.label": "Temperatura w salonie",
+        "CONFIG.location": "Salon"
+    },
+    "EXI01-6": {
+        "CONFIG.label": "Temperatura zewnetrzna",
+        "CONFIG.location": "Na zewnatrz"
+    },
+    "EXI01-7": {
+        "CONFIG.label": "Temperatura dodatkowa w dzieciecym",
+        "CONFIG.location": "Dzieciecy"
+    },
+    "EXI01-1": {
+        "CONFIG.label": "Temperatura w dzieciecym",
+        "CONFIG.location": "Dzieciecy"
+    },
+    "EXI01-5": {
+        "CONFIG.label": "Temperatura w pracowni",
+        "CONFIG.location": "Pracownia"
+    },
+    "EXI01-3": {
+        "CONFIG.label": "Temperatura podlogi w kuchni",
+        "CONFIG.location": "Kuchnia"
+    },
+    "EXI04-11": {
+        "CONFIG.label": "Przelacznik pralnia",
+        "CONFIG.location": "Hol"
+    },
+    "EXI06-13": {
+        "CONFIG.type": "motion_sensor",
+        "CONFIG.label": "Czujnik ruchu garazu",
+        "CONFIG.location": "Garaz"
+    },
+    "EXI01-9": {
+        "CONFIG.label": "Temperatura w lazience",
+        "CONFIG.location": "Lazienka"
+    },
+    "EXI06-1": {
+        "CONFIG.type": "light_sensor",
+        "CONFIG.label": "Czujnik swiatla",
+        "CONFIG.location": "Na zewnatrz"
+    }
+}
