@@ -2,7 +2,7 @@
 
 This is Home Assistent addon for using AnB (Belgium) Minido or D2000 system within Home Assistent as MQTT devices. 
 
-## MINIDO/D20000
+## MINIDO/D2000
 
 
 
@@ -10,9 +10,9 @@ This is Home Assistent addon for using AnB (Belgium) Minido or D2000 system with
 
 It contains 2 microservices:
 
-- **minido_link** is link between TCPCLient/Serial conectivity to MINIDO and MQTT. It directly transmits minido packages in its raw/binary format and place it into the MQTT topic. It constitutes **LOW protocol**.
+- **minido_link** is link service between TCPCLient/Serial conectivity to MINIDO and MQTT. It directly transmits minido packages in its raw/binary format and place it into the MQTT topic. It constitutes **LOW protocol**.
 
-- **minido_home** is bridge between LOW protocl and Home Assistant MQTT Item (https://www.home-assistant.io/integrations/mqtt/). It allowes for storing configurations for each MINIDO item. It supports Home Assistant discovery messages for configured items. It constitutes **HOME protocol**.
+- **minido_home** is bridge service between LOW protocl and Home Assistant MQTT Item (https://www.home-assistant.io/integrations/mqtt/). It allowes for storing configurations for each MINIDO item. It supports Home Assistant discovery messages for configured items. It constitutes **HOME protocol**.
 
 
 
@@ -81,9 +81,13 @@ EXO:
 Configuration enables adding  metadate for MINIDO items, which enables its better representation in the Home Assistant. Configuration is a JSON map object. 
 
 The following types of configurations are most importent:
-- **type** - This is the most importent part of the configuration, it defines how Home Assistent will see the MINIDO items. It supports the followin values: temperature, dimmer, switch, binary_sensor, motion_sensor, light_sensor, button_short, button_long, light, cover. By default all minido items are configured as **switch**.  
-- label = auto()
-- location = auto()
+- **type** - This is the most importent part of the configuration, it defines how Home Assistent will discover each MINIDO item. It supports the followin values: temperature, dimmer, switch, binary_sensor, motion_sensor, light_sensor, button_short, button_long, light, cover. Type will define also what By default all minido items are configured as **switch**.  
+- label - This is human friendly description of the item eg. _"Main Light"_
+- location - This is human friendly description of the item location eg. _"Kitchen"_
+
+**Please Note:** Bridge service can automaticly recognize values and automaticli assign the type configuration such as: dimer or temperature based on the analyses of the values recieved over the bus._
+
+**Please Note:** _Configuration inhearits within the trea of MINIDO items. E.g. any configuration for EXI01, would be applicable also for EXI01-1, EXI01-2, etc. Any configuration for EXO would be applicable for EXO01, EXO02, etc, so effectively for EXO01-1, EXO01-2, ..., EXO02-1, EXO02-2, etc._
 
 Additional types of configurations are as followes:
 - typediscovery = auto()
@@ -94,4 +98,4 @@ Additional types of configurations are as followes:
 - cover = auto()
 - covertime = auto()
 
-**Please Note:** _Configuration inhearits within the trea of MINIDO items. E.g. any configuration for EXI01, would be applicable also for EXI01-1, EXI01-2, etc. Any configuration for EXO would be applicable for EXO01, EXO02, etc, so effectively for EXO01-1, EXO01-2, ..., EXO02-1, EXO02-2, etc._
+
