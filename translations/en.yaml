@@ -1,0 +1,57 @@
+configuration:
+  minidoLinkType:
+    name: MINIDO Link
+    description: >-
+      Type of conectivity used to access MINIDO bus.
+  minidoSerial:
+    name: MINIDO Serial Port
+    description: >-
+      Serial port for MINIDO conectivity. It is used only when Serial (UART) conectivity mode is set to access MINIDO bus.
+  minidoTCPAddress:
+    name: MINIDO IP Address
+    description: >-
+      MINIDO server IP address. It is used only when TCP client conectivity mode is set to access MINIDO bus.
+  minidoTCPPort:
+    name: MINIDO Socket Port
+    description: >-
+      MINIDO server port. It is used only when TCP client conectivity mode is set to access MINIDO bus.
+  mqttBrokerAddress:
+    name: MQTT Broker IP Address
+    description: >-
+      MQTT broker IP address.
+  mqttPort: 
+    name: MQTT Broker Port
+    description: >-
+      MQTT broker port.
+  mqttUser:
+    name: MQTT User Name
+    description: >-
+      User name used to authenticate to MQTT broker.
+  mqttPassword:
+    name: MQTT User Password
+    description: >-
+      Password used to authenticate to MQTT broker..
+  homeid:
+    name: Home Identifier
+    description: >-
+      Topic name home identifier for minido messages. 
+  lowProtocolTopic:
+    name: Low Protocol Identifier
+    description: >-
+      Topic element for bridge to minido bus messages.
+  readTopic: 
+    name: Read Channel Identifier
+    description: >-
+      Topic name sufix for messages received from minido bus.
+  writeTopic: 
+    name: Write Channel Identifier
+    description: >-
+      Topic name sufix for messages to be sent to minido bus.
+  homeProtocolTopic: 
+    name: Home Protocol Identifier
+    description: >-
+      Topic element for minido status and cmand messaging.
+  discoveryTopic: 
+    name: Home Assistant discovery topic name
+    description: >-
+      Topic used by HA for publishing discovery messages.
