@@ -1,0 +1,44 @@
+name: "MINIDO MQTT Bridge"
+description: "MINIDO tcp/serial bridge to mqtt"
+version: "1.0.0"
+slug: "minido_mqtt_bridge"
+init: false
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+  - i386
+startup: before
+url: "https://github.com/szymonzys/minido2mqtt"
+uart: true
+options:
+  minidoLinkType: "tcpclient"
+  #minidoSerial: 0
+  #minidoTCPAddress: "192.168.1.249"
+  #minidoTCPPort: 1024
+  #mqttBrokerAddress: null
+  #mqttPort: 1883
+  #mqttUser: "mqtt"
+  #mqttPassword: "mqtt"
+  homeid: "myhome"
+  lowProtocolTopic: "low"
+  readTopic: "read"
+  writeTopic: "write"
+  homeProtocolTopic: "home"
+  discoveryTopic: "homeassistant"
+schema:
+  minidoLinkType: list(tcpclient|serial)
+  minidoSerial: device(subsystem=tty)?
+  minidoTCPAddress: str?
+  minidoTCPPort: port?
+  mqttBrokerAddress: str?
+  mqttPort: port?
+  mqttUser: str?
+  mqttPassword: password?
+  homeid: str
+  lowProtocolTopic: str
+  readTopic: str
+  writeTopic: str
+  homeProtocolTopic: str
+  discoveryTopic: str
