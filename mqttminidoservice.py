@@ -19,7 +19,7 @@ qosRange.coerceDoc = "Must be 0, 1, or 2."
 
 class MQTTOptions(usage.Options):
     optParameters = [
-        ["mqttBroker", "b", "192.168.1.41", "MQTT Broker address"],
+        ["mqttBroker", "b", "192.168.1.230", "MQTT Broker address"],
         ["mqttPort", "r", 1883, "MQTT Broker port"],
         ["mqttUser", "U", "mqtt", "MQTT Broker authentication user name"],
         ["mqttPassword", "P", "mqtt", "MQTT Broker authentication password"],
