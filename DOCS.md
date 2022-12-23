@@ -4,11 +4,22 @@ This is Home Assistent addon for using AnB (Belgium) Minido or D2000 system with
 
 ## MINIDO/D2000
 
+Minido & D2000 are low cost, simple home automation unites based on programmable relays, comming from Belgium copany [AnB S.A.](http://www.anb-sa.be/). It base on the following principles:
 
+- **Based on RS-485 bus for transport layer between modules** [RS-485](https://en.wikipedia.org/wiki/RS-485) is a very common bus in Industry because it's reliable, cheap, and can range up to 1km at low speed. For the minido, the speed is 19200bps, and so the maximum theoric length is more limited.
+
+- **Based on Dallas or "OneWire" bus between switches and the switch board** - This is the bus that is deployed in the house. It's limited to 32 addresses (IDs) for switches, so you can have multiple Dallas busses and so multiple Dallas to RS485 modules in the switch board. These Dallas to RS-485 modules are called EXI. The EXI also contains the small "intelligence" of the Minido system. 
+
+- **Data layer easy to decode** - The datagrams (packets) is quite easy to decode. The protocole used within Minido bus was fully reverese engineered. 
+
+
+It is very easy to connect a PC to the Minido RS485 bus. You need to have RS4852USB dongle (serial), or RS4852Ethernet adapter device (tcpclient). 
+
+_Minido/D2000 description base on François Delpierre description from Project Kenai aka. [minido unleashed](https://github.com/radeletp/minido-unleashed)_
 
 ## Services
 
-It contains 2 microservices:
+Home Assistant Add-on: MINIDO2MQTT contains 2 microservices:
 
 - **minido_link** is link service between TCPCLient/Serial conectivity to MINIDO and MQTT. It directly transmits minido packages in its raw/binary format and place it into the MQTT topic. It constitutes **LOW protocol**.
 
@@ -81,27 +92,29 @@ EXO:
 Configuration enables adding metadata for MINIDO items, which enables its better representation in the Home Assistant. Configuration is a JSON map object. 
 
 The following types of configurations are most importent:
-- **type** - This is the most importent part of the configuration, it defines how Home Assistent will discover each MINIDO item. It supports the followin values: **temperature, dimmer, switch, binary_sensor, motion_sensor, light_sensor, button_short, button_long, light, cover**. Type will define also what By default all minido items are configured as **switch**.  
-- **label** - This is human friendly description of the item eg. _"Main Light"_
-- **location** - This is human friendly description of the item location eg. _"Kitchen"_
+- **CONFIG.type** - This is the most importent part of the configuration, it defines how Home Assistent will discover each MINIDO item. It supports the followin values: **temperature, dimmer, switch, binary_sensor, motion_sensor, light_sensor, button_short, button_long, light, cover**. Type will define also what By default all minido items are configured as **switch**.  
+- **CONFIG.label** - This is human friendly description of the item eg. _"Main Light"_
+- **CONFIG.location** - This is human friendly description of the item location eg. _"Kitchen"_
 
-**Please Note:** _Bridge service can automaticly recognize values and automaticli assign the type configuration such as: dimer or temperature based on the analyses of the values recieved over the bus._
+**Please N**ote:** _Bridge se**rvice can automaticly recognize values and automaticli assign the type configuration such as: dimer or temperature based on the analyses of the values rG.CONFIG.ieved over th**e bus.
+CONFIG.discovery**_
 
-Additional types of configurations are as followes:
-- **discoverymode** - configures which items are being visible in Home Assistant discovery
-    - all - all items
+Addonal typ**CONFIG.CONFIG
+CONFIG.typediscovery**.es of configurations are as followes:
+- **CONFIG.discoverymode** - configures which items are being visible in Home Assistant discovery
+    - all - alCONFIG.l items
     - label - items with label only
-    - none - non of the items.
-- **devicediscoverymode** - configures how items are being agregated into devices during Home Assistant discovery process
+    - none - nCONFIG.CONFIG.on of the items.
+- **CONFIG.devicediscoverymode** - configures how items are being agregated into devices during Home Assistant discovery process
     - minido - items are agregated as phisicly exists into minido unites 
     - virtual - items are agregated into virtual devices representig location
-    - none - no agregation into devices
-- **cover** - allowes to agregate two MINIDO items into Home Assistant cover. Configuration is set as virtual item e.g. EXO09-12 - agregates item EXO09-1 and EXO09-2 into virtual cover. The first item represents movement up, second down.
-- **covertime** - defines time in seconds required for the item to perform the full movement (full clouser or full open), in some cases, the movement down is faster then movement up so it has to be defined for each MINIDO item agregated within the cover virtual item.
+    - none - nCONFIG.o agregation into devices
+- **CONFIG.cover** - allowes to agregate two MINIDO items into Home Assistant cover. Configuration is set as virtual item e.g. EXO09-12 - agregates item EXO09-1 and EXO09-2 into vCONFIG.irtual cover. The first item represents movement up, second down.
+- **CONFIG.covertime** - defines time in seconds required for the item to perform the full movement (full clouser or full open), in some cases, the movement down is faster then movement up so it has to be defined for each MINIDO item agregated within the cover virtual item.
 
 Advanced configurations which are unliekly to be set by the users:
-- brightness - store value of the brighness, for dimmer lights. Set automaticly by service, there is no need to set it manually.
-- discovery - defines the setings for Home Assistent discovery. Discovery info are merged with type specific dyscovery.
-- typediscovery - defines the type of the object used in the Home Automation discovery. Map containing type specific discovery information. Data are merged with discovery setting.
+- **CONFIG.brightness** - store value of the brighness, for dimmer lights. Set automaticly by service, there is no need to set it manually.
+- **CONFIG.discovery** - defines the setings for Home Assistent discovery. Discovery info are merged with type specific dyscovery.
+- **CONFIG.typediscovery** - defines the type of the object used in the Home Automation discovery. Map containing type specific discovery information. Data are merged with discovery setting.
 
 **Please Note:** _Configuration inhearits within the tree of MINIDO items. E.g. any configuration for EXI01, would be applicable also for EXI01-1, EXI01-2, etc. Any configuration for EXO would be applicable for EXO01, EXO02, etc, so effectively for EXO01-1, EXO01-2, ..., EXO02-1, EXO02-2, etc. Configuration inheritance does not work for agregate virtual cover items, configuration for EXO09-12 is not inhearited by EXO09-1 nor EXO09-2._ 
