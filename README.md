@@ -5,7 +5,7 @@
 
 ## About
 
-This is Home Assistent addon for using AnB (Belgium) Minido or D2000 system within Home Assistent as MQTT devices.  
+This is Home Assistent addon for using AnB S.A. (Belgium) Minido or D2000 system within Home Assistent as MQTT devices.  
 
 [aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg
 [amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
