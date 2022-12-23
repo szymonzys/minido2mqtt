@@ -12,7 +12,7 @@ It contains 2 microservices:
 
 - **minido_link** is link service between TCPCLient/Serial conectivity to MINIDO and MQTT. It directly transmits minido packages in its raw/binary format and place it into the MQTT topic. It constitutes **LOW protocol**.
 
-- **minido_home** is bridge service between LOW protocl and Home Assistant MQTT Item (https://www.home-assistant.io/integrations/mqtt/). It allowes for storing configurations for each MINIDO item. It supports Home Assistant discovery messages for configured items. It constitutes **HOME protocol**.
+- **minido_home** is bridge service between LOW protocl and [Home Assistant MQTT](https://www.home-assistant.io/integrations/mqtt/) item. It allowes for storing configurations for each MINIDO item. It supports [Home Assistant discovery](https://www.home-assistant.io/integrations/mqtt/#mqtt-discovery) messages for configured items. It constitutes **HOME protocol**.
 
 
 
