@@ -78,7 +78,7 @@ EXO:
 
 ## Configuration
 
-Configuration enables adding  metadate for MINIDO items, which enables its better representation in the Home Assistant. Configuration is a JSON map object. 
+Configuration enables adding metadata for MINIDO items, which enables its better representation in the Home Assistant. Configuration is a JSON map object. 
 
 The following types of configurations are most importent:
 - **type** - This is the most importent part of the configuration, it defines how Home Assistent will discover each MINIDO item. It supports the followin values: **temperature, dimmer, switch, binary_sensor, motion_sensor, light_sensor, button_short, button_long, light, cover**. Type will define also what By default all minido items are configured as **switch**.  
@@ -87,15 +87,21 @@ The following types of configurations are most importent:
 
 **Please Note:** _Bridge service can automaticly recognize values and automaticli assign the type configuration such as: dimer or temperature based on the analyses of the values recieved over the bus._
 
-**Please Note:** _Configuration inhearits within the trea of MINIDO items. E.g. any configuration for EXI01, would be applicable also for EXI01-1, EXI01-2, etc. Any configuration for EXO would be applicable for EXO01, EXO02, etc, so effectively for EXO01-1, EXO01-2, ..., EXO02-1, EXO02-2, etc._
-
 Additional types of configurations are as followes:
-- typediscovery = auto()
-- brightness = auto()
-- discovery = auto()
-- discoverymode = auto()
-- devicediscoverymode = auto()
-- cover = auto()
-- covertime = auto()
+- **discoverymode** - configures which items are being visible in Home Assistant discovery
+    - all - all items
+    - label - items with label only
+    - none - non of the items.
+- **devicediscoverymode** - configures how items are being agregated into devices during Home Assistant discovery process
+    - minido - items are agregated as phisicly exists into minido unites 
+    - virtual - items are agregated into virtual devices representig location
+    - none - no agregation into devices
+- **cover** - allowes to agregate two MINIDO items into Home Assistant cover. Configuration is set as virtual item e.g. EXO09-12 - agregates item EXO09-1 and EXO09-2 into virtual cover. The first item represents movement up, second down.
+- **covertime** - defines time in seconds required for the item to perform the full movement (full clouser or full open), in some cases, the movement down is faster then movement up so it has to be defined for each MINIDO item agregated within the cover virtual item.
 
+Advanced configurations which are unliekly to be set by the users:
+- brightness - store value of the brighness, for dimmer lights. Set automaticly by service, there is no need to set it manually.
+- discovery - defines the setings for Home Assistent discovery. Discovery info are merged with type specific dyscovery.
+- typediscovery - defines the type of the object used in the Home Automation discovery. Map containing type specific discovery information. Data are merged with discovery setting.
 
+**Please Note:** _Configuration inhearits within the tree of MINIDO items. E.g. any configuration for EXI01, would be applicable also for EXI01-1, EXI01-2, etc. Any configuration for EXO would be applicable for EXO01, EXO02, etc, so effectively for EXO01-1, EXO01-2, ..., EXO02-1, EXO02-2, etc. Configuration inheritance does not work for agregate virtual cover items, configuration for EXO09-12 is not inhearited by EXO09-1 nor EXO09-2._ 
