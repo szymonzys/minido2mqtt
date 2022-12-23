@@ -12,6 +12,7 @@ Minido & D2000 are low cost, simple home automation unites based on programmable
 
 - **Data layer easy to decode** - The datagrams (packets) is quite easy to decode. The protocole used within Minido bus was fully reverese engineered. 
 
+- **D2000** - is a central unit which can be part of the system deplyment. It stores the state of the unites, and controles communication to avoid colisions.
 
 It is very easy to connect a PC to the Minido RS485 bus. You need to have RS4852USB dongle (serial), or RS4852Ethernet adapter device (tcpclient). 
 
