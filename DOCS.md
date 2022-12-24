@@ -93,7 +93,7 @@ EXO:
 Configuration enables adding metadata for MINIDO items, which enables its better representation in the Home Assistant. Configuration is a JSON map object. 
 
 The following types of configurations are most importent:
-- **CONFIG.type** - This is the most importent part of the configuration, it defines how Home Assistent will discover each MINIDO item. It supports the followin values: **temperature, dimmer, switch, binary_sensor, motion_sensor, light_sensor, button_short, button_long, light, cover**. Type will define also what By default all minido items are configured as **switch**.  
+- **CONFIG.type** - This is the most importent part of the configuration, it defines how Home Assistent will discover each MINIDO item. It supports the followin values: **[temperature](https://www.home-assistant.io/integrations/cover.mqtt/), [dimmer](https://www.home-assistant.io/integrations/light.mqtt), [switch](https://www.home-assistant.io/integrations/switch.mqtt/), [binary_sensor](https://www.home-assistant.io/integrations/binary_sensor.mqtt/), [motion_sensor](https://www.home-assistant.io/integrations/binary_sensor.mqtt/), [light_sensor](https://www.home-assistant.io/integrations/binary_sensor.mqtt/), [button_short](https://www.home-assistant.io/integrations/button.mqtt/), [button_long](https://www.home-assistant.io/integrations/button.mqtt/), [light](https://www.home-assistant.io/integrations/light.mqtt), [cover](https://www.home-assistant.io/integrations/cover.mqtt/)**. Type will define also what By default all minido items are configured as **switch**.  
 - **CONFIG.label** - This is human friendly description of the item eg. _"Main Light"_
 - **CONFIG.location** - This is human friendly description of the item location eg. _"Kitchen"_
 
