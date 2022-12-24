@@ -6,9 +6,9 @@ This is Home Assistent addon for using AnB (Belgium) Minido or D2000 system with
 
 Minido & D2000 are low cost, simple home automation unites based on programmable relays, comming from Belgium copany [AnB S.A.](http://www.anb-sa.be/). It base on the following principles:
 
-- **Based on RS-485 bus for transport layer between modules** [RS-485](https://en.wikipedia.org/wiki/RS-485) is a very common bus in Industry because it's reliable, cheap, and can range up to 1km at low speed. For the minido, the speed is 19200bps, and so the maximum theoric length is more limited.
+- **RS-485 bus for transport layer between modules** [RS-485](https://en.wikipedia.org/wiki/RS-485) is a very common bus in Industry because it's reliable, cheap, and can range up to 1km at low speed. For the minido, the speed is 19200bps, and so the maximum theoric length is more limited.
 
-- **Based on Dallas or "OneWire" bus between switches and the switch board** - This is the bus that is deployed in the house. It's limited to 32 addresses (IDs) for switches, so you can have multiple Dallas busses and so multiple Dallas to RS485 modules in the switch board. These Dallas to RS-485 modules are called EXI. The EXI also contains the small "intelligence" of the Minido system. 
+- **Dallas or "OneWire" bus between switches and the switch board** - This is the bus that is deployed in the house. It's limited to 32 addresses (IDs) for switches, so you can have multiple Dallas busses and so multiple Dallas to RS485 modules in the switch board. These Dallas to RS-485 modules are called EXI. The EXI also contains the small "intelligence" of the Minido system. 
 
 - **Data layer easy to decode** - The datagrams (packets) is quite easy to decode. The protocole used within Minido bus was fully reverese engineered. 
 
