@@ -103,7 +103,7 @@ CONFIG.discovery**_
 Addonal typ**CONFIG.CONFIG
 CONFIG.typediscovery**.es of configurations are as followes:
 - **CONFIG.discoverymode** - configures which items are being visible in Home Assistant discovery
-    - all - alCONFIG.l items
+    - all - all items
     - label - items with label only
     - none - nCONFIG.CONFIG.on of the items.
 - **CONFIG.devicediscoverymode** - configures how items are being agregated into devices during Home Assistant discovery process
