@@ -97,20 +97,18 @@ The following types of configurations are most importent:
 - **CONFIG.label** - This is human friendly description of the item eg. _"Main Light"_
 - **CONFIG.location** - This is human friendly description of the item location eg. _"Kitchen"_
 
-**Please N**ote:** _Bridge se**rvice can automaticly recognize values and automaticli assign the type configuration such as: dimer or temperature based on the analyses of the values rG.CONFIG.ieved over th**e bus.
-CONFIG.discovery**_
+**Please Note:** _Bridge service can automaticly recognize values and automaticli assign the type configuration such as: dimer or temperature based on the analyses of the values recieved over the bus._
 
-Addonal typ**CONFIG.CONFIG
-CONFIG.typediscovery**.es of configurations are as followes:
+Addonal types of configurations are as followes:
 - **CONFIG.discoverymode** - configures which items are being visible in Home Assistant discovery
     - all - all items
     - label - items with label only
-    - none - nCONFIG.CONFIG.on of the items.
+    - none - none of the items.
 - **CONFIG.devicediscoverymode** - configures how items are being agregated into devices during Home Assistant discovery process
     - minido - items are agregated as phisicly exists into minido unites 
     - virtual - items are agregated into virtual devices representig location
-    - none - nCONFIG.o agregation into devices
-- **CONFIG.cover** - allowes to agregate two MINIDO items into Home Assistant cover. Configuration is set as virtual item e.g. EXO09-12 - agregates item EXO09-1 and EXO09-2 into vCONFIG.irtual cover. The first item represents movement up, second down.
+    - none - no agregation into devices
+- **CONFIG.cover** - allowes to agregate two MINIDO items into Home Assistant cover. Configuration is set as virtual item e.g. EXO09-12 - agregates item EXO09-1 and EXO09-2 into virtual cover. The first item represents movement up, second down.
 - **CONFIG.covertime** - defines time in seconds required for the item to perform the full movement (full clouser or full open), in some cases, the movement down is faster then movement up so it has to be defined for each MINIDO item agregated within the cover virtual item.
 
 Advanced configurations which are unliekly to be set by the users:
