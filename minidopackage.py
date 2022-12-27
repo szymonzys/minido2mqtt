@@ -77,15 +77,18 @@ class MINIDO(Enum):
 class EndPoint:
     SEPARATOR = "-"
 
-    def __init__(self, minido, number = 0):
+    def __init__(self, minido, number = 0, action = 0):
         self.minido = minido
         self.number = number
+        self.action = action
 
     def __str__(self):
         if (self.number == 0):
             return self.minido.name
-        else:
+        elif (self.action == 0):
             return self.minido.name + EndPoint.SEPARATOR + str(self.number)
+        else:
+            return self.minido.name + EndPoint.SEPARATOR + str(self.number) + EndPoint.SEPARATOR + str(self.action)
 
     def isLeaf(self):
         return self.number != 0
@@ -103,10 +106,13 @@ class EndPoint:
         if message == "None":
             return None
         split = str(message).split(EndPoint.SEPARATOR)
-        if len(split) == 1:
+        length = len(split)
+        if length == 1:
             return EndPoint(MINIDO[split[0]])
-        else:
+        elif length == 2:
             return EndPoint(MINIDO[split[0]], int(split[1]))
+        else:
+            return EndPoint(MINIDO[split[0]], int(split[1]), int(split[2]))
 
 
 
