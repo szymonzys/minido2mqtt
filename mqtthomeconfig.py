@@ -57,6 +57,7 @@ class COMMAND(Enum):
     DISCOVER = auto()
     CONFIG_SAVE = auto()
     CONFIG_LOAD = auto()
+    CONFIG_SET = auto()
     CONFIG_CLEAN = auto()
     def __str__(self):
         return self.name

@@ -30,6 +30,7 @@ class MinidoHomeDevice(MinidoHomeDiscoverable):
         self.commands[COMMAND.DISCOVER] = DeviceCommand(self.discoverMode, self.discoverEndPoints)
         self.commands[COMMAND.CONFIG_LOAD] = DeviceCommand(self.fileName, self.configLoad)
         self.commands[COMMAND.CONFIG_SAVE] = DeviceCommand(self.fileName, self.configSave)
+        self.commands[COMMAND.CONFIG_SET] = DeviceCommand(lambda payload: json.loads(payload), self.configSet)
         self.commands[COMMAND.CONFIG_CLEAN] = DeviceCommand(lambda payload: None, self.configClean)
 
     # Low level handlers
@@ -171,10 +172,12 @@ class MinidoHomeDevice(MinidoHomeDiscoverable):
             with open(value, 'r') as fp:
                 self.__configClean()
                 self.protocol.model.configs = json.load(fp)
-                for str_endpoint in self.protocol.model.configs:
-                    self.protocol.publishEndpoint(json.dumps(self.protocol.model.configs[str_endpoint], indent=4),
-                                                  str_endpoint if str_endpoint != "None" else None, TOPICTYPE.config)
+                self.__configSet()
 
+    def __configSet(self):
+        for str_endpoint in self.protocol.model.configs:
+            self.protocol.publishEndpoint(json.dumps(self.protocol.model.configs[str_endpoint], indent=4),
+                                          str_endpoint if str_endpoint != "None" else None, TOPICTYPE.config)
 
     def configSave(self, endpoint, value):
         if endpoint is None:
@@ -184,6 +187,13 @@ class MinidoHomeDevice(MinidoHomeDiscoverable):
                     if len(self.protocol.model.configs[key]) == 0:
                         del self.protocol.model.configs[key]
                 json.dump(self.protocol.model.configs, fp, indent=4)
+
+    def configSet(self, endpoint, value):
+        if endpoint is None:
+            print(":::SET CONFIG COMMAND::: ")
+            self.__configClean()
+            self.protocol.model.configs = value
+            self.__configSet()
 
     # Helpers
 

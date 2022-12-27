@@ -170,7 +170,8 @@ class MinidoHomeDiscoverable:
     @classmethod
     def virtualDevice(cls, location):
         return {
-            str(DISCOVERYDEVICE.manufacturer): "Minido MQTT Bridge",
+            str(DISCOVERYDEVICE.manufacturer): "AnB S.A.",
+            str(DISCOVERYDEVICE.model): "Minido MQTT Bridge",
             str(DISCOVERYDEVICE.identifiers): [location],
             str(DISCOVERYDEVICE.name): "Virtual Minido Device (" + location + ")",
             str(DISCOVERYDEVICE.suggested_area): location
