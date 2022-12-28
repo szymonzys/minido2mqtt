@@ -51,9 +51,9 @@ Generic:
 
 
 EXI:
-- {myhome}/{minido}/{home}/EXOxx-x[x]/stat/TEMPERATURE => -64, 64 (in celsius)
+- {myhome}/{minido}/{home}/EXIxx-x[x]/stat/TEMPERATURE => -64, 64 (in celsius)
 - {myhome}/{minido}/{home}/EXIxx-x[x]/stat/BUTTON => ON/OFF
-- {myhome}/{minido}/{home}/EXOxx-x[x]/cmnd/BUTTON <= ON/OFF
+- {myhome}/{minido}/{home}/EXIxx-x[x]/cmnd/BUTTON <= ON/OFF
 - {myhome}/{minido}/{home}/EXIxx-x[x]/cmnd/PRESS <= long/short/{float} - time in seconds for pressing the button
 
 
