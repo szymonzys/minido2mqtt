@@ -217,7 +217,7 @@ class ExoDevice(MinidoHomeDevice):
         self.commands[COMMAND.COVER] = DeviceCommand(lambda payload: COVER[payload.decode("utf-8")],
                                                      self.sendCoverControl)
         self.commands[COMMAND.POSITION] = DeviceCommand(lambda payload: int(payload.decode("utf-8")),
-                                                     self.sendCoverPosition)
+                                                     self.sendCoverSetPosition)
     # Low level handlers
 
     def isMyPdu(self, packet):
@@ -359,18 +359,29 @@ class ExoDevice(MinidoHomeDevice):
             case COVER.open:
                 exo_values[endpoint.number // 10 - 1] = STATUS.ON.value
                 exo_values[endpoint.number % 10 - 1] = STATUS.OFF.value
+                # Time to stop
+                move_endpoint = EndPoint(endpoint.minido, endpoint.number // 10)
+                config = self.protocol.model.getEndpointFullConfig(move_endpoint)
+                cover_time = config[str(CONFIG.covertime)]
                 pass
             case COVER.close:
                 exo_values[endpoint.number // 10 - 1] = STATUS.OFF.value
                 exo_values[endpoint.number % 10 - 1] = STATUS.ON.value
+                # Time to stop
+                move_endpoint = EndPoint(endpoint.minido, endpoint.number % 10)
+                config = self.protocol.model.getEndpointFullConfig(move_endpoint)
+                cover_time = config[str(CONFIG.covertime)]
                 pass
             case COVER.stop:
                 exo_values[endpoint.number // 10 - 1] = STATUS.OFF.value
                 exo_values[endpoint.number % 10 - 1] = STATUS.OFF.value
+                cover_time = 0
                 pass
         self._sendExoPackage(minido, exo_values)
+        if cover_time > 0:
+            reactor.callLater(cover_time, self.sendCoverControl, endpoint, COVER.stop)
 
-    def sendCoverPosition(self, endpoint, value):
+    def sendCoverSetPosition(self, endpoint, value):
         pos = self.protocol.model.getEndpointValue(endpoint)
         delta = pos - value
         move_endpoint_number = (endpoint.number // 10) if delta < 0 else (endpoint.number % 10)
