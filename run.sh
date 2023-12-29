@@ -58,10 +58,12 @@ echo "LINK Params: ${LINKPARAMETERS}"
 echo "MQTT Params: ${MQTTPARAMETERS}"
 echo "HOME Params: ${HOMEPARAMETERS}"
 
+source /venv/bin/activate
+
 echo "Starting LINK ..."
-python3 /minido_link.py ${MQTTUSERPARAMETERS} ${MQTTPARAMETERS} ${LINKMODE} ${LINKPARAMETERS} &
+python3 /minido_link.py --mqttId=ha_minidoLink ${MQTTUSERPARAMETERS} ${MQTTPARAMETERS} ${LINKMODE} ${LINKPARAMETERS} &
 echo "Starting BRIDGE ..."
-python3 /mqtt_home.py ${MQTTUSERPARAMETERS} ${MQTTPARAMETERS} ${HOMEPARAMETERS} &
+python3 /mqtt_home.py --mqttId=ha_minidoHome ${MQTTUSERPARAMETERS} ${MQTTPARAMETERS} ${HOMEPARAMETERS} &
 
 # Wait for any process to exit
 wait -n
