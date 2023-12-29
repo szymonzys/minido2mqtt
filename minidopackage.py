@@ -122,10 +122,12 @@ class CMD(Enum):
     EXI_STATUS = 0x25  # Exi state changed
     UNK_CONSOLE_PRINT = 0x02  # Used by D2000, to print message on console
     UNK_CONSOLE_03 = 0x03  # Used by D2000, communicate with console, comes after two 0x02 messages
-    D2000_UNK15_GET = 0x15  # Used by PC to get status of all ???: could be bits, could be seqencers ??? in single request, params (01,00), responce 64 elements
+
     D2000_EXI_GET = 0x0A  # Used by PC to get status of all EXI in two request, params (01,00) and (01,01)
+    D2000_UNK15_GET = 0x15  # Used by PC to get status of all ???: could be bits, could be seqencers ??? in single request, params (01,00), responce 64 elements
     D2000_EXO_GET = 0x18  # Used by PC to get status of all EXO in single request, params (01,00)
     D2000_UNK23_GET = 0x23  # Used by PC to get status of all ???: could be bits, could be seqencers ??? in single request, params (01,00), responce 12 elements
+
     BUS_TOKEN_GRANT = 0x3F  # Used by D2000 for granting communication slot for 1 message
     BUS_TOKEN_REFUSE = 0x21  # Used by D2000 for refusing communication slot
     EXICENT = 0x31  # Not faced with my D2000
@@ -136,11 +138,14 @@ class CMD(Enum):
 
     @staticmethod
     def ignoreCMD(value):
-        cmd = CMD(value)
+        try:
+            cmd = CMD(value)
 
-        if cmd.name[:3] in ("UNK", "BUS"):
-            return True
-        return False
+            if cmd.name[:3] in ("UNK", "BUS"):
+                return True
+            return False
+        except:
+            return False
 
 
 class STATUS(Enum):
@@ -318,7 +323,7 @@ class ExiStatusPdu(CommandPdu):
     @property
     def valueInt(self):
         byte = self.params[4]
-        if self.params[5] == 1:
+        if self.params[5] == 1 or STATUS.isValueIn(byte):
             return byte
         else:
             return (-1) * byte
